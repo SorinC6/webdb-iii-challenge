@@ -1,0 +1,28 @@
+{
+	"dependencies": {
+		"express": "^4.16.4",
+		"helmet": "^3.16.0"
+	},
+	"name": "webdb-iii-challenge",
+	"description": "## Topics",
+	"version": "1.0.0",
+	"main": "index.js",
+	"devDependencies": {
+		"nodemon": "^1.18.10"
+	},
+	"scripts": {
+		"server": "nodemon",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SorinC6/webdb-iii-challenge.git"
+	},
+	"keywords": [],
+	"author": "Sorin Chis - WebEu1",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/SorinC6/webdb-iii-challenge/issues"
+	},
+	"homepage": "https://github.com/SorinC6/webdb-iii-challenge#readme"
+}
