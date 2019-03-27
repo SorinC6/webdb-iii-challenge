@@ -48,6 +48,20 @@ server.post('/api/cohorts', async (req, res) => {
 	}
 });
 
+server.put('/api/cohorts/:id', async (req, res) => {
+	try {
+		const result = await db('cohorts').where({ id: req.params.id }).update(req.body);
+		if (result > 0) {
+			const cohort = await db('cohorts').where({ id: req.params.id }).first();
+			res.status(200).json(cohort);
+		} else {
+			res.status(404).json({ error: "The specified id does't exists" });
+		}
+	} catch (error) {
+		res.status(500).json({ error: 'unable to update data' });
+	}
+});
+
 const port = process.env.PORT || 4000;
 
 server.get('/', (req, res) => {
