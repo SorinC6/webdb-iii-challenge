@@ -77,7 +77,11 @@ cohortRoute.delete('/:id', async (req, res) => {
 cohortRoute.get('/:id/students', async (req, res) => {
 	try {
 		const students = await db('students').where({ cohort_id: req.params.id });
-		res.status(200).json(students);
+		if (students.length) {
+			res.status(200).json(students);
+		} else {
+			res.status(404).json({ message: 'the specified id Not Found' });
+		}
 	} catch (error) {
 		res.status(500).json({ error: 'tehre was a problem retriving the data' });
 	}
