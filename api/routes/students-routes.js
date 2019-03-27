@@ -15,4 +15,17 @@ studentsRoute.get('/', async (req, res) => {
 	}
 });
 
+studentsRoute.get('/:id', async (req, res) => {
+	try {
+		const student = await db('students').where({ id: req.params.id }).first();
+		if (student) {
+			res.status(200).json(student);
+		} else {
+			res.status(404).json({ message: "the specified id done't exists" });
+		}
+	} catch (error) {
+		res.status(500).json({ error: 'There was a error trying to get the sudent' });
+	}
+});
+
 module.exports = studentsRoute;
