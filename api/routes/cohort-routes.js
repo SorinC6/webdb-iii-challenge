@@ -72,4 +72,15 @@ cohortRoute.delete('/:id', async (req, res) => {
 	}
 });
 
+//getting all stundets in a specified cohort
+
+cohortRoute.get('/:id/students', async (req, res) => {
+	try {
+		const students = await db('students').where({ cohort_id: req.params.id });
+		res.status(200).json(students);
+	} catch (error) {
+		res.status(500).json({ error: 'tehre was a problem retriving the data' });
+	}
+});
+
 module.exports = cohortRoute;
