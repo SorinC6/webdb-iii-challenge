@@ -21,8 +21,8 @@
 		"rollback": "knex migrate:rollback",
 		"seed1": "knex seed:make 01-cohorts",
 		"seed2": "knex seed:make 02-students",
-		"runseed1": "knex seed:run 01-roles",
-		"runseed2": "knex seed:run 02-users"
+		"runseed1": "knex seed:run 01-cohorts",
+		"runseed2": "knex seed:run 02-students"
 	},
 	"repository": {
 		"type": "git",
