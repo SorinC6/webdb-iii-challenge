@@ -6,7 +6,9 @@
   "scripts": {
     "server": "nodemon index.js",
     "createCohorts": "knex migrate:make createCohortsTable",
-    "createStudents": "knex migrate:make createStudentsTable"
+    "createStudents": "knex migrate:make createStudentsTable",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
   },
   "repository": {
     "type": "git",

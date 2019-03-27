@@ -11,7 +11,8 @@ Update the content of `knexfile.js` to contain `migrations` and `seeds` objects 
 When importing the module from `knexfile.js`, do not forget to call the `development` object from the module, to add to `knex` function.
 
 
-## Create a database with `knex`
+
+## Create/upgrade a database with `knex`
 
 To create or upgrade a database, we'll use Migrations. Migrations allow for you to define sets of schema changes.
 
@@ -31,3 +32,32 @@ You can save this command in `package.json`s scripts object.
 ```
 And then run it with `yarn createCohorts` or `npm createCohorts`.
 
+After running the scrip, new Javascript file is created based on your knex config.
+Now you can write your migrations inside this file.
+
+`exports.up` will contain your desired changes to the database.
+`exports.down` will contain code, that will undo the changes and allows you to rollback in case of problems.
+
+Inside these functions, your write knex functions to create/upgrade your database.
+See more details about these functions [here](data/migrations/20190327134034_createCohortsTable.js).
+
+Once you have finished writing the migrations, you can update the database by running:
+```
+knex migrate:latest
+```
+Again, you can save this command in `package.json` as a script.
+
+
+
+## Rolling back the database with `knex`
+
+If for whatever reason, you want to rollback the last batch of migrations, use:
+```
+knex migrate:rollback
+```
+
+
+
+## Seed files into a database
+
+Seed files allows you to populate your database with test or seed data independent of your migration files.
