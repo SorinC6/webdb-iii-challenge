@@ -1,0 +1,28 @@
+{
+  "name": "sql_migrations_seeding_join-query",
+  "version": "1.0.0",
+  "description": "- Databases\r - Relational Databases\r - Knex migrations.\r - Seeding data.",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "createCohorts": "knex migrate:make createCohortsTable",
+    "createStudents": "knex migrate:make createStudentsTable"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pav0l/webdb-iii-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pav0l/webdb-iii-challenge/issues"
+  },
+  "homepage": "https://github.com/Pav0l/webdb-iii-challenge#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "nodemon": "^1.18.10",
+    "sqlite3": "^4.0.6"
+  }
+}
