@@ -33,7 +33,7 @@ You can save this command in `package.json`s scripts object.
 ```
 And then run it with `yarn createCohorts` or `npm createCohorts`.
 
-After running the scrip, new Javascript file is created based on your knex config.
+After running the script, new Javascript file is created based on your knex config.
 Now you can write your migrations inside this file.
 
 `exports.up` will contain your desired changes to the database.
