@@ -62,6 +62,19 @@ server.put('/api/cohorts/:id', async (req, res) => {
 	}
 });
 
+server.delete('/api/cohorts/:id', async (req, res) => {
+	try {
+		const result = await db('cohorts').where({ id: req.params.id }).del();
+		if (result > 0) {
+			res.status(200).json({ message: 'Delete cohort succesfully' });
+		} else {
+			res.status(404).json({ error: 'Id not found for this cohort' });
+		}
+	} catch (error) {
+		res.status(500).status({ error: 'There was a error trying to delete data' });
+	}
+});
+
 const port = process.env.PORT || 4000;
 
 server.get('/', (req, res) => {
