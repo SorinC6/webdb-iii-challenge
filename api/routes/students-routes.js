@@ -44,7 +44,18 @@ studentsRoute.post('/', async (req, res) => {
 	}
 });
 
-
-
+studentsRoute.put('/:id', async (req, res) => {
+	try {
+		const result = await db('students').where({ id: req.params.id }).update(req.body);
+		if (result) {
+			const student = await db('students').where({ id: req.params.id }).first();
+			res.status(200).json(student);
+		} else {
+			res.status(404).json({ message: "The specified id does't exists" });
+		}
+	} catch (error) {
+		res.status(500).json({ error: 'error tryng to update data' });
+	}
+});
 
 module.exports = studentsRoute;
