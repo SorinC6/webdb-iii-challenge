@@ -8,7 +8,10 @@
     "createCohorts": "knex migrate:make createCohortsTable",
     "createStudents": "knex migrate:make createStudentsTable",
     "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
+    "rollback": "knex migrate:rollback",
+    "seedCohorts": "knex seed:make 01-cohorts",
+    "seedStudents": "knex seed:make 02-students",
+    "runSeeds": "knex seed:run"
   },
   "repository": {
     "type": "git",

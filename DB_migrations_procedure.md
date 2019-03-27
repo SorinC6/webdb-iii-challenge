@@ -1,3 +1,5 @@
+# Knex migrations and seeding
+
 ## Initialize and configure `knex`
 
 To create `knexfile.js` and initialize knex, use:
@@ -9,7 +11,6 @@ Update the content of `knexfile.js` to contain `migrations` and `seeds` objects 
 [link](knexfile.js).
 
 When importing the module from `knexfile.js`, do not forget to call the `development` object from the module, to add to `knex` function.
-
 
 
 ## Create/upgrade a database with `knex`
@@ -48,7 +49,6 @@ knex migrate:latest
 Again, you can save this command in `package.json` as a script.
 
 
-
 ## Rolling back the database with `knex`
 
 If for whatever reason, you want to rollback the last batch of migrations, use:
@@ -57,7 +57,22 @@ knex migrate:rollback
 ```
 
 
-
 ## Seed files into a database
 
-Seed files allows you to populate your database with test or seed data independent of your migration files.
+Seed files allows you to populate your database with test or seed data independent of your migration files. Seed files will be created in the directory specified in your knexfile.js.
+
+To create a seed file, run:
+```
+knex seed:make seed_name
+```
+
+Edit the content of the seed function according to your needs.
+See more details about my seed functions [here](data/seeds/01-cohorts.js).
+
+Once you have finished writing the seed function, you can run seed files:
+```
+knex seed:run
+```
+
+Seed files are executed in alphabetical order. Unlike migrations, every seed file will be executed when you run the command. You should design your seed files to reset tables as needed before inserting data.
+
