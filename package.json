@@ -1,7 +1,9 @@
 {
 	"dependencies": {
 		"express": "^4.16.4",
-		"helmet": "^3.16.0"
+		"helmet": "^3.16.0",
+		"knex": "^0.16.3",
+		"sqlite3": "^4.0.6"
 	},
 	"name": "webdb-iii-challenge",
 	"description": "## Topics",
@@ -12,7 +14,15 @@
 	},
 	"scripts": {
 		"server": "nodemon",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"initdb": "knex init",
+		"table1": "knex migrate:make createCohortsTable",
+		"table2": "knex migrate:make createStudentsTable",
+		"migrate": "knex migrate:latest",
+		"rollback": "knex migrate:rollback",
+		"seed1": "knex seed:make 01-cohorts",
+		"seed2": "knex seed:make 02-students",
+		"runseed1": "knex seed:run 01-roles",
+		"runseed2": "knex seed:run 02-users"
 	},
 	"repository": {
 		"type": "git",
