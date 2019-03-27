@@ -31,11 +31,22 @@ server.get('/api/cohorts/:id', async (req, res) => {
 	}
 });
 
-// server.post('api/cohorts', async (req,res)=>{
-// 	try {
-// 		const result=await db
-// 	}
-// })
+server.post('/api/cohorts', async (req, res) => {
+	const body = req.body;
+	if (body.name) {
+		try {
+			const [ result ] = await db('cohorts').insert(req.body);
+
+			const cohort = await db('cohorts').where({ id: result }).first();
+
+			res.status(201).json(cohort);
+		} catch (error) {
+			res.status(500).json({ error: 'There was a error tryng to save the data in database' });
+		}
+	} else {
+		res.status(400).json({ error: 'Bad request' });
+	}
+});
 
 const port = process.env.PORT || 4000;
 
