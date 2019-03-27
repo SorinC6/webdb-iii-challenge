@@ -18,6 +18,25 @@ server.get('/api/cohorts', async (req, res) => {
 	}
 });
 
+server.get('/api/cohorts/:id', async (req, res) => {
+	try {
+		const cohort = await db('cohorts').where({ id: req.params.id }).first();
+		if (cohort) {
+			res.status(200).json(cohort);
+		} else {
+			res.status(404).json({ message: "The specified id does't exists" });
+		}
+	} catch (error) {
+		res.status(500).json({ error: 'There was a error trying to get the data' });
+	}
+});
+
+// server.post('api/cohorts', async (req,res)=>{
+// 	try {
+// 		const result=await db
+// 	}
+// })
+
 const port = process.env.PORT || 4000;
 
 server.get('/', (req, res) => {
