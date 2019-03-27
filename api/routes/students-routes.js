@@ -58,4 +58,17 @@ studentsRoute.put('/:id', async (req, res) => {
 	}
 });
 
+studentsRoute.delete('/:id', async (req, res) => {
+	try {
+		const result = await db('students').where({ id: req.params.id }).del();
+		if (result > 0) {
+			res.status(200).json({ message: 'Succesfully deleted' });
+		} else {
+			res.status(404).json({ error: "the specified id does't exists" });
+		}
+	} catch (error) {
+		res.status(500).json({ error: 'there was a error tryng to delete the student' });
+	}
+});
+
 module.exports = studentsRoute;
